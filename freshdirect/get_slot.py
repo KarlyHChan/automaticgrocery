@@ -26,10 +26,16 @@ def create_driver(url):
     driver.get(url)
     return driver
 def waitandclick(driver, xpath):
+    checkout = wait_and_find(driver, xpath)
+    checkout.click()
+
+
+def wait_and_find(driver, xpath):
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, xpath)))
     checkout = driver.find_element_by_xpath(xpath)
-    checkout.click()
+    return checkout
+
 
 def alert_user(slots):
     freq = 2500
