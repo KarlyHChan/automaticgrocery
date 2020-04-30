@@ -30,8 +30,8 @@ def waitandclick(driver, xpath):
     checkout.click()
 
 
-def wait_and_find(driver, xpath):
-    WebDriverWait(driver, 10).until(
+def wait_and_find(driver, xpath, wait_time=10):
+    WebDriverWait(driver, wait_time).until(
         EC.presence_of_element_located((By.XPATH, xpath)))
     checkout = driver.find_element_by_xpath(xpath)
     return checkout
